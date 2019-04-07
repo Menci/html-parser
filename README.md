@@ -127,6 +127,17 @@ StringEx title = document.getTitle();
 // title = "a ≤ b"
 ```
 
+### `HTMLDocument::getArticleContent`
+Get the page's article content (i.e. text inside all `<p>` tags) of the document, separated by `\n`.
+
+```cpp
+HTMLDocument document("<p>a &le; b</p><div>QAQ</div><p>qwq</p>");
+
+// StringEx HTMLDocument::getArticleContent()
+StringEx content = document.getArticleContent();
+// content = "a ≤ bqwq"
+```
+
 ## HTMLDocument::Element
 The interface to get data from a HTML element or its subtree.
 

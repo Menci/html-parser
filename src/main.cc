@@ -10,4 +10,5 @@ int main(int argc, char *argv[]) {
     HTMLDocument document = arguments.inputFile == '-' ? HTMLDocument(std::cin)
                                                        : HTMLDocument(std::ifstream(arguments.inputFile));
     document.inspect();
+    std::cout << document.getArticleContent() << std::endl;
 }
