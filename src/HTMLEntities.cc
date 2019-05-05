@@ -289,13 +289,11 @@ static StringEx parseNamedEntity(std::string::const_iterator &begin,
     std::string::const_iterator backupBegin = begin;
 
     std::shared_ptr<TrieNode> current = namedEntitiesTrieRoot;
-    for (std::string::const_iterator &it = begin; current->word.empty() && it != end; it++) {
-        if (std::shared_ptr<TrieNode> &child = current->child[(size_t)*it]) {
-            current = child;
-        }
+    for (std::string::const_iterator &it = begin; current && current->word.empty() && it != end; it++) {
+					current = current->child[(unsigned char)*it];
     }
 
-    if (!current->word.empty()) return current->word;
+    if (current && !current->word.empty()) return current->word;
 
     begin = backupBegin;
     return "";
